@@ -1,0 +1,69 @@
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fontspec,xunicode,xltxtra}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{xeCJK}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{printlen}
+\usepackage{ifthen}
+\usepackage[savepos]{zref}
+\usepackage{multicol}
+\usepackage{sectsty}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{hyperref}
+
+\usepackage[paper=a4paper]{geometry}
+\geometry{headheight=2.6cm,headsep=3mm,footskip=13mm}
+\geometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+
+\setCJKmainfont[BoldFont={SimHei}]{SimSun}
+\newfontfamily{\monotype}{Consolas}
+%\newcommand{\monotype}{\tt}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{MH3500 FINAL CHEAT SHEET}
+\fancyhead[R]{}
+
+\setlength{\parindent}{0em}
+
+% settings for listings
+\lstset {
+  basicstyle = \small\monotype,
+  language = C++,
+  tabsize = 2,
+  breaklines = true,
+  breakindent = 1.1em,
+  numbers=right,
+  stringstyle=\monotype,
+  numberstyle=\footnotesize\ttfamily,
+  firstnumber=last,
+  basewidth={0.5em, 0.4em},
+  frame=single
+}
+
+% an amazing script
+% converts an line-number to arbitrary string
+\let\othelstnumber=\thelstnumber
+\def\createlinenumber#1#2{
+    \edef\thelstnumber{%
+        \unexpanded{%
+            \ifnum#1=\value{lstnumber}\relax
+             \tt #2%
+            \else}%
+        \expandafter\unexpanded\expandafter{\thelstnumber\othelstnumber\fi}%
+    }
+    \ifx\othelstnumber=\relax\else
+      \let\othelstnumber\relax
+    \fi
+}
+
+\usepackage{enumitem}
+
+\setlist[itemize]{itemsep=0pt}
