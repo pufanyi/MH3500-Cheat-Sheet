@@ -48,6 +48,20 @@
   frame=single
 }
 
+\usepackage{titlesec}
+
+% Adjust spacing for section
+\titlespacing*{\section}{0pt}{1ex plus 0.5ex minus .2ex}{1ex plus .2ex}
+
+% Adjust spacing for subsection
+\titlespacing*{\subsection}{0pt}{1ex plus 0.5ex minus .2ex}{1ex plus .2ex}
+
+% Adjust spacing for subsubsection
+\titlespacing*{\subsubsection}{0pt}{1ex plus 0.5ex minus .2ex}{1ex plus .2ex}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0pt, parsep=0pt, topsep=0pt}
+
 % an amazing script
 % converts an line-number to arbitrary string
 \let\othelstnumber=\thelstnumber

@@ -1,6 +1,7 @@
 \documentclass[9pt,landscape]{article}
 
 \usepackage{multicol}
+\usepackage{amsmath}
 
 \input{format.tex} % formatting template
 
@@ -12,15 +13,11 @@
 
 \section{公式}
 
-\subsection{求和}
-
 $\sum_{k=1}^{n}k^3=\frac{1}{4}n^2(n+1)^2$
 
 $\sum_{k=0}^{n-1}r^k=\frac{1-r^n}{1-r}, r\neq 1$
 
 $\sum_{k=1}^{n}kr^k=r\frac{1-(n+1)r^n+nr^{n+1}}{(1-r)^2}, r\neq 1$
-
-\subsection{Maclaurin Series}
 
 $\sin x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}x^{2n+1} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots$
 
@@ -29,8 +26,6 @@ $\cos x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!}x^{2n} = 1 - \frac{x^2}{2!} + 
 $\ln x = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}(x-1)^n = (x-1) - \frac{(x-1)^2}{2} - \cdots$
 
 $\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \cdots$
-
-\subsection{常见导数公式}
 
 $\frac{\mathrm{d}}{\mathrm{d}x}\tan x=\sec ^{2}x$
 
@@ -45,8 +40,6 @@ $\frac{\mathrm{d}}{\mathrm{d}x}\arcsin x={\frac {1}{\sqrt {1-x^{2}}}}$
 $\frac{\mathrm{d}}{\mathrm{d}x}\arccos x=-{\frac {1}{\sqrt {1-x^{2}}}}$
 
 $\frac{\mathrm{d}}{\mathrm{d}x}\arctan x={\frac {1}{1+x^{2}}}$
-
-\subsection{积分（省略 $+C$）}
 
 $ \int {\frac {1}{x^{2}+\alpha ^{2}}}{\mbox{d}}x={\frac {\arctan {\frac {x}{\alpha }}}{\alpha }} $
 
@@ -83,10 +76,6 @@ $ \int _{-\infty }^{\infty }e^{-ax^{2}+bx+c}\,\mathrm{d}x={\sqrt {\frac {\pi }{a
 
 \subsubsection{Poisson Distribution}
 
-记号：$X \sim \text{Poisson}(\lambda)$
-
-概率：$p(k)=\frac{\lambda^k}{k!}e^{-\lambda}$
-
 本质上是一个$n\to\infty$的二项分布，$\lambda=np$。
 
 性质：$\mathbb{E}(X)=\lambda,\text{Var}(X)=\lambda$
@@ -105,19 +94,11 @@ $\mathbb{E}(X)=n\cdot\frac{m}{N}, \mathrm{Var}(X)=n\cdot \frac{m}{N}\left(1-\fra
 
 \subsubsection{Normal Distribution}
 
-PDF：$f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{\left(x-\mu\right)^2}{2\sigma^2}}$
-
-To $N(0, 1)$: $Z = \frac{X - \mu}{\sigma}$
-
 Approximate Bin: $np(1-p)\ge 10$
 
 $Z\sim N(0, 1), \mathbb{E}(g'(Z))=\mathbb{E}(Zg(Z))$,  assuming that $\lim_{x\to \infty}\frac{g(x)}{e^{\frac{x^2}{2}}}=0$. So $\mathbb{E}(Z^{n+1})=n\mathbb{E}(Z^{n-1})$.
 
 \subsubsection{Exponential Distribution}
-
-$X\sim \mathrm{Exp}(\lambda)$
-
-PDF：$f(x)=\lambda e^{-\lambda x}, x\ge 0$
 
 CDF：$F(X)=1-e^{-\lambda x}, x\ge 0$
 
@@ -149,11 +130,27 @@ $\mathbb{E}(X^n)=\frac{n+\alpha-1}{\lambda}\mathbb{E}(X^{n-1})=\frac{\alpha^{\ov
 
 $X\sim \chi^2(k)$
 
-PDF：$f(x)=\frac{1}{2^{\frac{k}{2}}\Gamma\left(\frac{k}{2}\right)}x^{\frac{k}{2}-1}e^{-\frac{x}{2}}$
-
-$k$（自由度）个 $N(0, 1)$所组成向量长度平方的分布。
-
 $\mathbb{E}(X)=k$
+
+$\mathcal{N}(0, 1)^2\sim \chi^2_1$
+
+$\chi^2_n\sim \Gamma\left(\frac{n}{2}, 2\right)$
+
+\subsubsection{$t$-Distribution}
+
+$T_k = \frac{C}{\sqrt{D/k}}, C\sim\mathcal{N}(0, 1), D = \chi^2_k$
+
+$\frac{\sqrt{n}(\overline{X}-\mu)}{S}\sim t_{n-1}$ for $X_i\sim \mathcal{N}(\mu, \sigma^2)$
+
+$\sigma^2=\frac{v}{v-2}$ for $v>2$, $\infty$ for $1<v\le 2$
+
+$f(t)=\frac{\Gamma[(n + 1) / 2]}{\sqrt{n\pi}\Gamma(n/2)}\left(1 + \frac{t^2}{n}\right)^{-\frac{n + 1}{2}}$
+
+\subsubsection{$F$-Distribution}
+
+$F(m, n) = \frac{U/m}{V/n}, U\sim\chi_m^2, V\sim \chi_n^2$
+
+$f(w)=\frac{\Gamma\left(\frac{n+m}{2}\right)}{\Gamma\left(\frac{m}{2}\right)\Gamma\left(\frac{n}{2}\right)}\cdot\left(\frac{m}{n}\right)^{\frac{m}{2}}\cdot w^{\frac{m}{2}-1}\cdot\left(1+\frac{m}{n}w\right)^{-\frac{m+n}{2}}$
 
 \subsection{MGF}
 
@@ -161,45 +158,18 @@ $M(X)=\mathbb{E}\left[e^{tX}\right]$
 
 $M^{(m)}(X)=\mathbb{E}\left[X^m\right]$
 
-\subsection{Covariance}
-
-$\mathbb{E}(g(X)\cdot h(Y))=\mathbb{E}(g(X))\cdot \mathbb{E}(h(Y))$
-
-$\mathrm{Cov}(X, Y)=\mathbb{E}((X-\mu_X)(Y-\mu_Y))=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)$
-
-$X, Y$ 独立 $\to$ $\mathrm{Cov}(X, Y)=0$，但反过来不行
-
-$\mathrm{Cov}$的线性性：
-
-$\mathrm{Cov}\left(a+\sum_{i=1}^{n}b_iX_i, c+\sum_{i=1}^{m}d_iY_i\right)=\sum_{i=1}^{n}\sum_{j=1}^{m}b_id_j\mathrm{Cov}(X_i, Y_j)$
-
-$\mathrm{Var}\left(a+\sum_{i=1}^{n}b_iX_i\right)=\sum_{i=1}^{n}\sum_{j=1}^{n}b_ib_j\mathrm{Cov}(X_i, Y_j)$
-
-Correlation coefficient: $\rho=\frac{\mathrm{Cov}(X, Y)}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}$
-
-柯西不等式：$-1\le\rho\le 1$，$\rho=\pm 1$ 当且仅当 $X, Y$ 线性相关
-
-\subsection{Sample Mean/Variance}
-
-$\overline{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$
-
-$S^2=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i-\overline{X}\right)^2$
-
-$\frac{1}{n-1}$ 的原因：为了对齐 $\sigma^2$，$\mathbb{E}(S^2)=\sigma^2$
-
-\subsection{Conditioning}
-
-$\mathbb{P}\mathrm{r}(E)=\int_{\mathbb{R}}\mathbb{P}\mathrm{r}(E\mid X=x)p(x)\mathrm{d}x$
-
-$\mathbb{E}(Y)=\mathbb{E}_X[\mathbb{E}_Y(Y\mid X)]$
-
-$\mathrm{Var}(Y\mid X)=\mathbb{E}(Y^2\mid X)-[\mathbb{E}(Y\mid X)]^2$
-
-$\mathrm{Var}(Y)=\mathrm{Var}[\mathbb{E}(Y\mid X)]+\mathbb{E}[\mathrm{Var}(Y\mid X)]$
-
-$T=\sum_{i=1}^{N}X_i$，$X, N$ 随机
-
-$Var(T)=(\mathbb{E}(X))^2\mathrm{Var}(N)+\mathbb{E}(N)\mathrm{Var}(X)$
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Distribution} & \textbf{MGF} & \textbf{PMF/PDF}\\ \hline
+$\mathrm{Bernoulli}(p)$ & $pe^t + 1-p$ & $p(1)=p$ \\ \hline
+$\mathrm{Binomial}(n, p)$ & $(1-p + pe^t)^n$&$\binom{n}{k}p^k(1-p)^{n-k}$\\ \hline
+$\mathrm{Poisson}(\lambda)$ & $e^{\lambda(e^t - 1)}$ &$p(k)=\frac{\lambda^k}{k!}e^{-\lambda}$\\ \hline
+$\mathrm{Geo}(p)$ & $\frac{pe^t}{1-(1-p)e^t}$ & $(1-p)^{k-1}p$ \\ \hline
+$\mathcal{N}(\mu, \sigma^2)$ & $e^{t\mu + \frac{1}{2}\sigma^2 t^2}$ &$\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$  \\ \hline
+$\mathrm{Exp}(\lambda)$ & $\frac{\lambda}{\lambda - t}$ & $\lambda e^{-\lambda x}$ \\ \hline
+$\Gamma(\alpha, \beta)$ & $(1 - \beta t)^{-\alpha}$ & $\frac{1}{\beta^k\Gamma(k)}x^{k-1}e^{-\frac{x}{\beta}}$ \\ \hline
+$\chi^2_k$ & $(1 - 2t)^{-\frac{k}{2}}$ &$\frac{1}{2^{\frac{k}{2}}\Gamma\left(\frac{k}{2}\right)}x^{\frac{k}{2}-1}e^{-\frac{x}{2}}$\\ \hline
+\end{tabular}
 
 \subsection{Central Limit Theorem}
 
@@ -224,6 +194,21 @@ Strong: $\mathbb{P}\mathrm{r}\left\{\lim_{n\to\infty}\overline{X}_n=\mu\right\}=
 $S_n=\sum_{i=1}^{n}X_i$
 
 $\lim_{n\to\infty}\mathbb{P}\mathrm{r}\left\{\frac{S_n-n\mu}{\sigma\sqrt{n}}\le x\right\}=\Phi(x)$
+
+\section{Estimation}
+
+\subsection{Maximum Likelihood (MLE)}
+
+$L(\boldsymbol{x}\mid \boldsymbol{\theta})=\prod_{i=1}^n f(x_i\mid \boldsymbol{\theta})$
+
+Standard conditions:
+\begin{enumerate}
+	\item $L(\theta)>0$ for all $\theta\in(a, b)$
+	\item $\frac{\partial L(\theta)}{\partial\theta}$ exists for all $\theta\in (a, b)$
+	\item $\lim_{\theta\to a^+}L(\theta)=\lim_{\theta\to b^-}L(\theta)=0$
+\end{enumerate}
+
+$\mathrm{Bias(\hat{\theta})}=\mathbb{E}_\theta(\theta)-\theta$
 
 \end{multicols}
 
