@@ -136,7 +136,9 @@ $\mathcal{N}(0, 1)^2\sim \chi^2_1$
 
 $\chi^2_n\sim \Gamma\left(\frac{n}{2}, 2\right)$
 
-$\frac{\sqrt{n}(\overline{X}-\mu)}{S}\sim t_{n-1}$
+$\frac{1}{\sigma^2}\sum (X_i-\mu)\sim\chi^2_n$
+
+$\frac{1}{\sigma^2}\sum (X_i-\overline{X})\sim\chi^2_{n-1}$
 
 \textbf{$t$-Distribution}
 
@@ -295,7 +297,7 @@ $1-\alpha$: \textbf{confidence level}
 
 需要注意的是 $L$ 和 $R$ 才是尊 Random Var
 
-\textbf{Pivotal Quantity}: $Q(\boldsymbol{X}, \theta)$ does not depend on any unknown parameter
+\textbf{Pivotal Quantity}: The \textbf{distribution} of $Q(\boldsymbol{X}, \theta)$ does not depend on any unknown parameter
 
 如果 $X_i\sim N(\mu, 1)$，$\overline{X}$ 是不可以的（因为 $\mu$ 不知道），但是 $\sqrt{n}(\overline{X}-\mu)$ 是可以的
 
@@ -359,11 +361,21 @@ simple vs simple
 
 \textbf{Likelihood ratio} $\Lambda(\boldsymbol{x})=\frac{L(\boldsymbol{x}\mid\theta_0)}{L(\boldsymbol{x}\mid\theta_1)}$
 
-rejection region $R = \{\boldsymbol{x}\in\mathbb{R}^n: \lambda\le t\}$
+rejection region $R = \{\boldsymbol{x}\in\mathbb{R}^n: \Lambda\le t\}$
 
 \textbf{Monotone Likelihood Ratio (MLR)}
 
-对于 $\theta<\theta'$，存在 $S(x)$ 使得 $\frac{p_{\theta'}(x)}{p_\theta(x)}$ 对 $S(x)$ 是不降的
+对于 $\theta<\theta'$，存在 $T(\boldsymbol{x})$ 使得 $\frac{p_{\theta'}(x)}{p_\theta(x)}$ 对 $T(\boldsymbol{x})$ 是不降的
+
+simple vs composite
+
+uniformly most powerful (UMP)
+
+满足 MLR，UMP test 存在，$\sup$ 在 $\theta=\theta_0$ 时候取到
+
+如果 $(L, U)$ 是一个 $100(1-\alpha)\%$ 的 confidence interval，那么 $\text{reject }H_0: 0=\theta_0\Leftrightarrow\theta_0\notin(L, U)$ 是 $\alpha$ size 的
+
+反过来也可以说
 
 \end{multicols}
 
